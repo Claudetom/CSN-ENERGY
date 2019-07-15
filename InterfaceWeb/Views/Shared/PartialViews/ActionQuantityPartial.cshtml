@@ -1,0 +1,39 @@
+﻿@model Test_CSN_ENERGY.Models.CatalogBooksViewModel
+
+@{
+    ViewData["Title"] = "CSN ENERGY TEST";
+}
+
+<div class="col-sm-6 col-sm-offset-2">
+    <h1>Quantity</h1>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            @using (Html.BeginForm("Quantity", "Home", FormMethod.Post, new { role = "form" }))
+            {
+                @* Combobox de la liste des livres *@
+                <div class="form-group">
+                    @Html.LabelFor(m => m.BookName)
+                    @Html.DropDownListFor(m => m.BookName, Model.ListeBookName, "- Sélectionner un livre -", new { @class = "form-control" })
+                </div>
+
+                <button type="submit" class="btn btn-primary">Quantity</button>
+            }
+
+            @if (Model.Quantity > -1)
+            {
+                var colorAlert = "alert-success";
+                var style = "padding: 0; margin-top: 10px; margin-bottom: 10px; line-height: 0;";
+
+                @if (Model.Quantity == 0)
+                {
+                    colorAlert = "alert-danger";
+                }
+
+                <div class="text-left text-sm-left alert @colorAlert" style="@style">
+                    <p>@await Html.PartialAsync("PartialViews/ResultQuantityPartial", Model)</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>

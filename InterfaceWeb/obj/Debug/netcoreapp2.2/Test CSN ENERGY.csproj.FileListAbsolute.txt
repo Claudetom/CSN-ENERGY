@@ -1,0 +1,30 @@
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\bin\Debug\netcoreapp2.2\Test CSN ENERGY.deps.json
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\bin\Debug\netcoreapp2.2\Test CSN ENERGY.runtimeconfig.json
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\bin\Debug\netcoreapp2.2\Test CSN ENERGY.runtimeconfig.dev.json
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\bin\Debug\netcoreapp2.2\Test CSN ENERGY.dll
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\bin\Debug\netcoreapp2.2\Test CSN ENERGY.pdb
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\bin\Debug\netcoreapp2.2\Test CSN ENERGY.Views.dll
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\bin\Debug\netcoreapp2.2\Test CSN ENERGY.Views.pdb
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\obj\Debug\netcoreapp2.2\Test CSN ENERGY.csprojAssemblyReference.cache
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\obj\Debug\netcoreapp2.2\Test CSN ENERGY.csproj.CoreCompileInputs.cache
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\obj\Debug\netcoreapp2.2\Test CSN ENERGY.RazorAssemblyInfo.cache
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\obj\Debug\netcoreapp2.2\Test CSN ENERGY.RazorAssemblyInfo.cs
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\obj\Debug\netcoreapp2.2\Test CSN ENERGY.AssemblyInfoInputs.cache
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\obj\Debug\netcoreapp2.2\Test CSN ENERGY.AssemblyInfo.cs
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\obj\Debug\netcoreapp2.2\Test CSN ENERGY.TagHelpers.input.cache
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\obj\Debug\netcoreapp2.2\Test CSN ENERGY.TagHelpers.output.cache
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\obj\Debug\netcoreapp2.2\Test CSN ENERGY.RazorCoreGenerate.cache
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.g.cshtml.cs
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.g.cshtml.cs
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.g.cshtml.cs
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.g.cshtml.cs
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\obj\Debug\netcoreapp2.2\Razor\Views\_ViewImports.g.cshtml.cs
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\obj\Debug\netcoreapp2.2\Razor\Views\_ViewStart.g.cshtml.cs
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\obj\Debug\netcoreapp2.2\Test CSN ENERGY.RazorTargetAssemblyInfo.cache
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\obj\Debug\netcoreapp2.2\Test CSN ENERGY.RazorTargetAssemblyInfo.cs
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\obj\Debug\netcoreapp2.2\Test CSN ENERGY.Views.pdb
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\obj\Debug\netcoreapp2.2\Test CSN ENERGY.dll
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\obj\Debug\netcoreapp2.2\Test CSN ENERGY.pdb
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\obj\Debug\netcoreapp2.2\Test CSN ENERGY.csproj.CopyComplete

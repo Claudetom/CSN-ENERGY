@@ -1,0 +1,43 @@
+﻿@model Test_CSN_ENERGY.Models.CatalogBooksViewModel
+@{
+    ViewData["Title"] = "CSN ENERGY TEST";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Actions disponibles sur le catalogue</h1>
+</div>
+
+<div class="row">
+
+    @* Affichage de l'action Quantity *@
+    @if (Model.ListeBookName != null && Model.ListeBookName.Count() > 0)
+    {
+        @await Html.PartialAsync("PartialViews/ActionQuantityPartial", Model);
+    }
+
+    @* Affichage de l'action Price *@
+    @if (Model.ListeBookName != null && Model.ListeBookName.Count() > 0)
+    {
+        @await Html.PartialAsync("PartialViews/ActionPricePartial", Model);
+    }
+</div>
+
+<div class="row">
+    <div class="col-sm-12 col-sm-offset-2">
+        @if (ViewBag.Message != null)
+        {
+            var style = "padding: 0; margin-top: 10px; margin-bottom: 10px; padding-left: 10px;";
+
+            <div class="text-left text-lg-left text-sm-left alert alert-danger" style="@style">
+                <p>@Html.Raw(@ViewBag.Message)</p>
+            </div>
+        }
+    </div>
+</div>
+
+<script type="text/javascript">
+        window.onload = function () {
+            //alert("@Html.Raw(ViewBag.Message)");
+        };
+
+</script>

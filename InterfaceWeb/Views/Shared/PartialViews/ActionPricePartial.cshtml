@@ -1,0 +1,63 @@
+﻿@model Test_CSN_ENERGY.Models.CatalogBooksViewModel
+
+@{
+    ViewData["Title"] = "CSN ENERGY TEST";
+}
+
+<div class="col-sm-6 col-sm-offset-2">
+    <h1>Price</h1>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            @using (Html.BeginForm("Basket", "Home", FormMethod.Post, new { role = "form" }))
+            {
+                @* ListBox de la liste des livres *@
+                <div class="form-group">
+                    @Html.LabelFor(m => m.SelectedBookNames)
+                    @Html.DropDownList("selectBooks", new SelectList(Model.ListeBookName, "Value", "Text"), new { onclick = "listebook_OnClick()", @class = "form-control", size = 6, multiple = "simple" })
+                </div>
+                <p>
+                    @Html.TextArea("SelectedBookNames", "", 4, 45, new { onchange = "selectedBookName_Change()", placeholder = "La sélection...", @class = "form-control", style = "font-size: small;" })
+                </p>
+                <button type="submit" class="btn btn-primary" style="">Price</button>
+            }
+
+            @if (Model.Price > -1)
+            {
+                var colorAlert = "alert-success";
+                var style = "padding: 0; margin-top: 10px; margin-bottom: 10px; line-height: 0;";
+
+                @if (Model.Price == 0)
+                {
+                    colorAlert = "alert-danger";
+                }
+
+                <div class="text-left text-sm-left alert @colorAlert" style="@style">
+                    <p>@await Html.PartialAsync("PartialViews/ResultPricePartial", Model)</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var arrBookSelected = [];
+
+    /**
+     * Ajout dans le tableau la sélection faite dans la combo
+     * */
+    function listebook_OnClick() {
+        arrBookSelected.push($("#selectBooks").val());
+        $("#SelectedBookNames").val(arrBookSelected.join(', '));
+        //permettra de faire x sélection consécutif
+        $('#selectBooks').val(null);
+    };
+
+    /**
+     * redéfinition du tableau si suppression manuel dans le textbox
+     * */
+    function selectedBookName_Change() {
+        val = $("#SelectedBookNames").val();
+        arrBookSelected = val !== "" ? $("#SelectedBookNames").val().split(", ") : [];
+    }
+</script>

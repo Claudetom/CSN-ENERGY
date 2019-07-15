@@ -1,0 +1,131 @@
+{
+  "format": 1,
+  "restore": {
+    "F:\\Sources NET\\Espace de travail\\CSN ENERGY\\Test CSN ENERGY\\Test CSN ENERGY.csproj": {}
+  },
+  "projects": {
+    "F:\\Sources NET\\Espace de travail\\CSN ENERGY\\Test CSN ENERGY\\LibraryCatalog\\LibraryCatalog.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\Sources NET\\Espace de travail\\CSN ENERGY\\Test CSN ENERGY\\LibraryCatalog\\LibraryCatalog.csproj",
+        "projectName": "LibraryCatalog",
+        "projectPath": "F:\\Sources NET\\Espace de travail\\CSN ENERGY\\Test CSN ENERGY\\LibraryCatalog\\LibraryCatalog.csproj",
+        "packagesPath": "C:\\Users\\claudetom\\.nuget\\packages\\",
+        "outputPath": "F:\\Sources NET\\Espace de travail\\CSN ENERGY\\Test CSN ENERGY\\LibraryCatalog\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\ProgramData\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\claudetom\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "F:\\Sources NET\\Espace de travail\\CSN ENERGY\\Test CSN ENERGY\\Test CSN ENERGY.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\Sources NET\\Espace de travail\\CSN ENERGY\\Test CSN ENERGY\\Test CSN ENERGY.csproj",
+        "projectName": "Test CSN ENERGY",
+        "projectPath": "F:\\Sources NET\\Espace de travail\\CSN ENERGY\\Test CSN ENERGY\\Test CSN ENERGY.csproj",
+        "packagesPath": "C:\\Users\\claudetom\\.nuget\\packages\\",
+        "outputPath": "F:\\Sources NET\\Espace de travail\\CSN ENERGY\\Test CSN ENERGY\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\ProgramData\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\claudetom\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "F:\\Sources NET\\Espace de travail\\CSN ENERGY\\Test CSN ENERGY\\LibraryCatalog\\LibraryCatalog.csproj": {
+                "projectPath": "F:\\Sources NET\\Espace de travail\\CSN ENERGY\\Test CSN ENERGY\\LibraryCatalog\\LibraryCatalog.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.AspNetCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.AspNetCore.Razor.Design": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}

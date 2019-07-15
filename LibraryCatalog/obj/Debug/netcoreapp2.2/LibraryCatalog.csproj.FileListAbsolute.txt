@@ -1,0 +1,17 @@
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\LibraryCatalog\bin\Debug\netcoreapp2.2\LibraryCatalog.deps.json
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\LibraryCatalog\bin\Debug\netcoreapp2.2\LibraryCatalog.dll
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\LibraryCatalog\bin\Debug\netcoreapp2.2\LibraryCatalog.pdb
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\LibraryCatalog\obj\Debug\netcoreapp2.2\LibraryCatalog.csproj.CoreCompileInputs.cache
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\LibraryCatalog\obj\Debug\netcoreapp2.2\LibraryCatalog.AssemblyInfoInputs.cache
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\LibraryCatalog\obj\Debug\netcoreapp2.2\LibraryCatalog.AssemblyInfo.cs
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\LibraryCatalog\obj\Debug\netcoreapp2.2\LibraryCatalog.dll
+F:\Sources NET\Espace de travail\CSN ENERGY\Test CSN ENERGY\LibraryCatalog\obj\Debug\netcoreapp2.2\LibraryCatalog.pdb
+F:\Sources NET\Espace de travail\CSN ENERGY\LibraryCatalog\bin\Debug\netcoreapp2.2\LibraryCatalog.deps.json
+F:\Sources NET\Espace de travail\CSN ENERGY\LibraryCatalog\bin\Debug\netcoreapp2.2\LibraryCatalog.dll
+F:\Sources NET\Espace de travail\CSN ENERGY\LibraryCatalog\bin\Debug\netcoreapp2.2\LibraryCatalog.pdb
+F:\Sources NET\Espace de travail\CSN ENERGY\LibraryCatalog\obj\Debug\netcoreapp2.2\LibraryCatalog.csprojAssemblyReference.cache
+F:\Sources NET\Espace de travail\CSN ENERGY\LibraryCatalog\obj\Debug\netcoreapp2.2\LibraryCatalog.csproj.CoreCompileInputs.cache
+F:\Sources NET\Espace de travail\CSN ENERGY\LibraryCatalog\obj\Debug\netcoreapp2.2\LibraryCatalog.AssemblyInfoInputs.cache
+F:\Sources NET\Espace de travail\CSN ENERGY\LibraryCatalog\obj\Debug\netcoreapp2.2\LibraryCatalog.AssemblyInfo.cs
+F:\Sources NET\Espace de travail\CSN ENERGY\LibraryCatalog\obj\Debug\netcoreapp2.2\LibraryCatalog.dll
+F:\Sources NET\Espace de travail\CSN ENERGY\LibraryCatalog\obj\Debug\netcoreapp2.2\LibraryCatalog.pdb

@@ -1,0 +1,16 @@
+﻿@model Test_CSN_ENERGY.Models.CatalogBooksViewModel
+
+@{
+    ViewData["Title"] = "CSN ENERGY TEST";
+}
+
+<div class="col-sm-6 col-sm-offset-2">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Quantity)
+                <span class="font-weight-bold">@Html.DisplayFor(m => m.Quantity, new { @class = "control-label" })</span>
+            </div>
+        </div>
+    </div>
+</div>
