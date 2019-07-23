@@ -4,7 +4,7 @@
     ViewData["Title"] = "CSN ENERGY TEST";
 }
 
-<div class="col-sm-6 col-sm-offset-2">
+<div class="col-sm-12 col-sm-offset-2">
     <h1>Price</h1>
 
     <div class="panel panel-default">
@@ -12,12 +12,73 @@
             @using (Html.BeginForm("Basket", "Home", FormMethod.Post, new { role = "form" }))
             {
                 @* ListBox de la liste des livres *@
-                <div class="form-group">
+                <div class="form-group" style="display: none;">
                     @Html.LabelFor(m => m.SelectedBookNames)
-                    @Html.DropDownList("selectBooks", new SelectList(Model.ListeBookName, "Value", "Text"), new { onclick = "listebook_OnClick()", @class = "form-control", size = 6, multiple = "simple" })
+                    @* @Html.DropDownList("selectBooks", new SelectList(Model.ListeBookName, "Value", "Text"), new { onclick = "listebook_OnClick()", @class = "form-control", size = 6, multiple = "simple" })*@
+                    @Html.DropDownList("selectBooks", new SelectList(Model.Catalog.Select(x => new { Value = x.Name, Text = $"{x.Category.Trim()} - {x.Name.Trim()}", Price = x.Price }), "Value", "Text"), new { @onclick = "listebook_OnClick(this)", @class = "form-control", size = 6, multiple = "simple" })
                 </div>
+
+                <div class="form-group" style="font-size: 12px;height: auto; overflow-y: auto;">
+                    @if (Model.Catalog.Count() > 0)
+                    {
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Catalog.First().Category)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Catalog.First().Name)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Catalog.First().Quantity)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Catalog.First().Price)
+                                    </th>
+                                    <th>
+                                        Qt.
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    var index = 0;
+                                }
+                                @foreach (var item in Model.Catalog)
+                                {
+                                    var idx = "index" + index++;
+                                    <tr>
+                                        <td style="vertical-align: middle;">
+                                            @Html.DisplayFor(modelItem => item.Category)
+                                        </td>
+                                        <td style="vertical-align: middle;">
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+                                        <td style="vertical-align: middle;">
+                                            @Html.DisplayFor(modelItem => item.Quantity)
+                                        </td>
+                                        <td style="vertical-align: middle;">
+                                            @Html.DisplayFor(modelItem => item.Price)
+                                        </td>
+                                        <td id="@idx" style="vertical-align: middle; font-size: 12px; font-weight: bold;">0</td>
+                                        <td style="vertical-align: middle;">
+                                            <div class="form-group" style="margin-bottom: 0;">
+                                                <input class="btn btn-danger" style="font-size: 12px; font-weight: bold; width: 70px; padding-top: 2px; padding-bottom: 2px; margin-bottom: 1px;" type="button" value="Retirer" onclick="numberMoins('@idx', '@item.Name')" />
+                                                <input class="btn btn-success" style="font-size: 12px; font-weight: bold; width: 70px; padding-top: 2px; padding-bottom: 2px; margin-bottom: 1px;" type="button" value="Ajouter" onclick="numberPlus('@idx', '@item.Name')" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+
+                </div>
+
                 <p>
-                    @Html.TextArea("SelectedBookNames", "", 4, 45, new { onchange = "selectedBookName_Change()", placeholder = "La sélection...", @class = "form-control", style = "font-size: small;" })
+                    @Html.TextArea("SelectedBookNames", "", 4, 45, new { onchange = "selectedBookName_Change()", placeholder = "La sélection...", @class = "form-control", style = "font-size: small; display: none" })
                 </p>
                 <button type="submit" class="btn btn-primary" style="">Price</button>
             }
@@ -46,8 +107,14 @@
     /**
      * Ajout dans le tableau la sélection faite dans la combo
      * */
-    function listebook_OnClick() {
-        arrBookSelected.push($("#selectBooks").val());
+    function listebook_OnClick(ddlObject) {
+
+        //Selected value de la dropdownlist
+        var selectedValue = $(ddlObject).val();
+        //Selected text de la dropdownlist
+        var selectedText = $(ddlObject).children("option:selected").html();
+
+        arrBookSelected.push(selectedValue);
         $("#SelectedBookNames").val(arrBookSelected.join(', '));
         //permettra de faire x sélection consécutif
         $('#selectBooks').val(null);
@@ -59,5 +126,48 @@
     function selectedBookName_Change() {
         val = $("#SelectedBookNames").val();
         arrBookSelected = val !== "" ? $("#SelectedBookNames").val().split(", ") : [];
+    };
+
+    function numberPlus(idCount, bookName) {
+        var idxCount = parseInt($('#' + idCount).html());
+        idxCount++;
+        $('#' + idCount).html(idxCount);
+
+        redefineArrayBooks(bookName, idxCount);
+    };
+
+    function numberMoins(idCount, bookName) {
+        var idxCount = parseInt($('#' + idCount).html());
+
+        if (idxCount <= 0)
+            idxCount = 1;
+
+        idxCount--;
+        $('#' + idCount).html(idxCount);
+
+        redefineArrayBooks(bookName, idxCount);
+    };
+
+    /**
+     * Permet de redéfinir la liste des livres sélectionnés dans le modèle utilisé
+     * bookName : le titre du livre
+     * count : nombre du titre
+     */
+    function redefineArrayBooks(bookName, count) {
+        val = $("#SelectedBookNames").val();
+        arrBookSelected = val !== "" ? val.split(", ") : [];
+
+        arrBookSelected = $.grep(arrBookSelected, function (e) {
+            return e != bookName;
+        });
+
+        if (count > 0) {
+            for (var i = 0; i < count; i++) {
+                arrBookSelected.push(bookName);
+            }
+        }
+
+        $("#SelectedBookNames").val(arrBookSelected.join(', '));
     }
+
 </script>

@@ -71,11 +71,7 @@ namespace Test_CSN_ENERGY.Controllers
             //importe les données
             Store.Import("CatalogBooks.json");
 
-            var model = new CatalogBooksViewModel
-            {
-                // Création de la liste de sélection pour le rendu de la page
-                ListeBookName = GetSelectListItems(Store.CatalogBooks.Catalog)
-            };
+            CatalogBooksViewModel model = CreateListeBookName();
 
             SetCatalogBooksViewModel(model);
 
@@ -103,17 +99,12 @@ namespace Test_CSN_ENERGY.Controllers
         private CatalogBooksViewModel GetCatalogBooksViewModel(CatalogBooksViewModel modelPassing, bool isQuantity)
         {
             // Récupère l'objet model de vue
-            CatalogBooksViewModel model;
+            CatalogBooksViewModel model = null;
 
             if (HttpContext.Session.Keys.Contains("CatalogBooksViewModel"))
                 model = HttpContext.Session.GetObjectFromJson<CatalogBooksViewModel>("CatalogBooksViewModel");
             else
-            {
-                model = new CatalogBooksViewModel
-                {
-                    ListeBookName = GetSelectListItems(Store.CatalogBooks.Catalog)
-                };
-            }
+                model = CreateListeBookName();
 
             if (modelPassing != null)
             {
@@ -180,6 +171,21 @@ namespace Test_CSN_ENERGY.Controllers
             }
 
             return selectList;
+        }
+
+        /// <summary>
+        /// Permet de créer la liste des livres et de copier le catalog dans le model utilisé par la vue 
+        /// </summary>
+        /// <returns>retourne le model avec les données de livres et catalog complet</returns>
+        private CatalogBooksViewModel CreateListeBookName()
+        {
+            var model = new CatalogBooksViewModel
+            {
+                ListeBookName = GetSelectListItems(Store.CatalogBooks.Catalog),
+                Catalog = Store.CatalogBooks.Catalog
+            };
+
+            return model;
         }
         #endregion
     }
