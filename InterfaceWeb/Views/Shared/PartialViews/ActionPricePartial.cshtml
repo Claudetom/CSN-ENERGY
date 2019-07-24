@@ -11,35 +11,36 @@
         <div class="panel-body">
             @using (Html.BeginForm("Basket", "Home", FormMethod.Post, new { role = "form" }))
             {
+
                 @* ListBox de la liste des livres *@
                 <div class="form-group" style="display: none;">
                     @Html.LabelFor(m => m.SelectedBookNames)
-                    @* @Html.DropDownList("selectBooks", new SelectList(Model.ListeBookName, "Value", "Text"), new { onclick = "listebook_OnClick()", @class = "form-control", size = 6, multiple = "simple" })*@
                     @Html.DropDownList("selectBooks", new SelectList(Model.Catalog.Select(x => new { Value = x.Name, Text = $"{x.Category.Trim()} - {x.Name.Trim()}", Price = x.Price }), "Value", "Text"), new { @onclick = "listebook_OnClick(this)", @class = "form-control", size = 6, multiple = "simple" })
                 </div>
 
-                <div class="form-group" style="font-size: 12px;height: auto; overflow-y: auto;">
+                <div class="form-group" style="font-size: 14px;height: auto; /*overflow-y: auto;*/">
                     @if (Model.Catalog.Count() > 0)
                     {
+                        @* Création de la grille *@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>
+                                    <th style="padding: 0.5rem;">
                                         @Html.DisplayNameFor(model => model.Catalog.First().Category)
                                     </th>
-                                    <th>
+                                    <th style="padding: 0.5rem;">
                                         @Html.DisplayNameFor(model => model.Catalog.First().Name)
                                     </th>
-                                    <th>
+                                    <th style="text-align: right; padding: 0.5rem;">
                                         @Html.DisplayNameFor(model => model.Catalog.First().Quantity)
                                     </th>
-                                    <th>
+                                    <th style="text-align: right; padding: 0.5rem;">
                                         @Html.DisplayNameFor(model => model.Catalog.First().Price)
                                     </th>
-                                    <th>
+                                    <th style="text-align: right; padding: 0.5rem;">
                                         Qt.
                                     </th>
-                                    <th></th>
+                                    <th style="padding: 0.5rem;"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -50,27 +51,49 @@
                                 {
                                     var idx = "index" + index++;
                                     <tr>
-                                        <td style="vertical-align: middle;">
-                                            @Html.DisplayFor(modelItem => item.Category)
+                                        <td class="alert alert-light" style="vertical-align: middle;">
+                                            <span class="font-weight-normal">@Html.DisplayFor(modelItem => item.Category, new { @class = "control-label" })</span>
                                         </td>
-                                        <td style="vertical-align: middle;">
-                                            @Html.DisplayFor(modelItem => item.Name)
+                                        <td class="alert alert-light" style="vertical-align: middle;">
+                                            <span class="font-weight-bolder">@Html.DisplayFor(modelItem => item.Name, new { @class = "control-label" })</span>
                                         </td>
-                                        <td style="vertical-align: middle;">
-                                            @Html.DisplayFor(modelItem => item.Quantity)
+                                        <td class="alert alert-light" style="vertical-align: middle; text-align: right;">
+                                            <span class="font-weight-normal">@Html.DisplayFor(modelItem => item.Quantity, new { @class = "control-label" })</span>
                                         </td>
-                                        <td style="vertical-align: middle;">
-                                            @Html.DisplayFor(modelItem => item.Price)
+                                        <td class="alert alert-light" style="vertical-align: middle; text-align: right;">
+                                            <span class="font-weight-bold">@Html.DisplayFor(modelItem => item.Price, new { @class = "control-label" })</span>
                                         </td>
-                                        <td id="@idx" style="vertical-align: middle; font-size: 12px; font-weight: bold;">0</td>
-                                        <td style="vertical-align: middle;">
+
+                                        @* La quantité sélectionné *@
+                                        <td class="alert alert-heading" style="vertical-align: middle; text-align: right; font-size: 14px;">
+                                            <span id="@idx" data-prix="@item.Price" class="qClass font-weight-bold">0</span>
+                                        </td>
+
+                                        @* Les boutons ajout/supp. *@
+                                        <td style="vertical-align: middle; text-align:center; border-top: 0px solid #dee2e6;">
                                             <div class="form-group" style="margin-bottom: 0;">
-                                                <input class="btn btn-danger" style="font-size: 12px; font-weight: bold; width: 70px; padding-top: 2px; padding-bottom: 2px; margin-bottom: 1px;" type="button" value="Retirer" onclick="numberMoins('@idx', '@item.Name')" />
-                                                <input class="btn btn-success" style="font-size: 12px; font-weight: bold; width: 70px; padding-top: 2px; padding-bottom: 2px; margin-bottom: 1px;" type="button" value="Ajouter" onclick="numberPlus('@idx', '@item.Name')" />
+                                                <input class="btnExecute btn btn-danger" style="font-size: 12px; font-weight: bold; width: 70px; padding-top: 2px; padding-bottom: 2px; margin-bottom: 1px;" type="button" value="Retirer" data-idx="@idx" data-name="@item.Name"/>
+                                                <input class="btnExecute btn btn-success" style="font-size: 12px; font-weight: bold; width: 70px; padding-top: 2px; padding-bottom: 2px; margin-bottom: 1px;" type="button" value="Ajouter" data-idx="@idx" data-name="@item.Name"/>
                                             </div>
                                         </td>
                                     </tr>
                                 }
+                                <tr style="border-top: 2px solid #dee2e6; font-size: 14px;">
+                                    <td class="alert alert-light" style="vertical-align: middle;"></td>
+                                    <td class="alert alert-light" style="vertical-align: middle;"></td>
+                                    <td class="alert alert-light" style="vertical-align: middle; text-align: right;"></td>
+                                    @* Total prix sans remise *@
+                                    <td colspan="1" id="TdPrixTotal" class="alert alert-dark" style="vertical-align: middle; text-align: right;">
+                                        <span id="SpPrixTotal" class="font-weight-bold">0</span>
+                                    </td>
+
+                                    @* La quantité sélectionné *@
+                                    <td colspan="1" id="TdCountTotal" class="alert alert-dark" style="vertical-align: middle; text-align: right;">
+                                        <span id="SpCountTotal" class="font-weight-bold">0</span>
+                                    </td>
+                                    <td class="alert alert-light" style="vertical-align: middle;"></td>
+                                </tr>
+
                             </tbody>
                         </table>
                     }
@@ -78,9 +101,10 @@
                 </div>
 
                 <p>
+                    @* Permet de récupérer la sélection des livres *@
                     @Html.TextArea("SelectedBookNames", "", 4, 45, new { onchange = "selectedBookName_Change()", placeholder = "La sélection...", @class = "form-control", style = "font-size: small; display: none" })
                 </p>
-                <button type="submit" class="btn btn-primary" style="">Price</button>
+                <button type="submit" class="btn btn-primary" style="">Calcul du Prix</button>
             }
 
             @if (Model.Price > -1)
@@ -103,30 +127,7 @@
 
 <script type="text/javascript">
     var arrBookSelected = [];
-
-    /**
-     * Ajout dans le tableau la sélection faite dans la combo
-     * */
-    function listebook_OnClick(ddlObject) {
-
-        //Selected value de la dropdownlist
-        var selectedValue = $(ddlObject).val();
-        //Selected text de la dropdownlist
-        var selectedText = $(ddlObject).children("option:selected").html();
-
-        arrBookSelected.push(selectedValue);
-        $("#SelectedBookNames").val(arrBookSelected.join(', '));
-        //permettra de faire x sélection consécutif
-        $('#selectBooks').val(null);
-    };
-
-    /**
-     * redéfinition du tableau si suppression manuel dans le textbox
-     * */
-    function selectedBookName_Change() {
-        val = $("#SelectedBookNames").val();
-        arrBookSelected = val !== "" ? $("#SelectedBookNames").val().split(", ") : [];
-    };
+    var intervalId;
 
     function numberPlus(idCount, bookName) {
         var idxCount = parseInt($('#' + idCount).html());
@@ -168,6 +169,71 @@
         }
 
         $("#SelectedBookNames").val(arrBookSelected.join(', '));
+        //total des sélections
+        $('#SpCountTotal').html(arrBookSelected.length);
+
+        calculTotal();
+    };
+
+    /**
+     * Format le nombre avec son signe
+     * prixCalcule : le prix
+     * idcont : le conteneur qui affichera le résultat
+     */
+    function formatMoney(prixCalcule, idcont) {
+        //permet d'obtenir le signe
+        var formatter = new Intl.NumberFormat('fr-FR', {
+            style: 'currency',
+            currency: 'EUR',
+            minimumFractionDigits: 2,
+        });
+
+        var prixTotal = formatter.format(prixCalcule);
+        document.getElementById(idcont).innerHTML = prixTotal;
     }
+
+    /**
+     * Permet de calculer dynamiquement la quantité sélectionné avec le prix (sans remise)
+     * */
+    function calculTotal() {
+        //prix total sans remise
+        var prixCalcule = 0;
+
+        //prix total sans remise
+        $("span").each(function (i) {
+            if ($(this).hasClass('qClass')) {
+                var prix = parseFloat($(this).data('prix'));
+                var qt = parseInt($(this).text());
+                prixCalcule += prix * qt;
+            }
+        });
+
+        formatMoney(prixCalcule, 'SpPrixTotal');
+    }
+
+    /**
+    * Ajout dans le tableau la sélection faite dans la combo
+    * */
+    function listebook_OnClick(ddlObject) {
+        //Selected value de la dropdownlist
+        var selectedValue = $(ddlObject).val();
+        //Selected text de la dropdownlist
+        var selectedText = $(ddlObject).children("option:selected").html();
+
+        arrBookSelected.push(selectedValue);
+        $("#SelectedBookNames").val(arrBookSelected.join(', '));
+        //permettra de faire x sélection consécutif
+        $('#selectBooks').val(null);
+    };
+
+    /**
+     * redéfinition du tableau si suppression manuel dans le textbox
+     * */
+    function selectedBookName_Change() {
+        val = $("#SelectedBookNames").val();
+        arrBookSelected = val !== "" ? $("#SelectedBookNames").val().split(", ") : [];
+    };
+
+    formatMoney(0, 'SpPrixTotal');
 
 </script>

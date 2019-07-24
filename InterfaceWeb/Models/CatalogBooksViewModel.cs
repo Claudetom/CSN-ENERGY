@@ -46,7 +46,7 @@ namespace Test_CSN_ENERGY.Models
         [Display(Name = "Prix:")]
         public double Price { get; set; } = -1;
 
-        [Display(Name = "Catalog")]
+        [Display(Name = "Catalogue:")]
         public IEnumerable<Catalog> Catalog { get; set; }
 
     }

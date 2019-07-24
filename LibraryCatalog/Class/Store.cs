@@ -81,12 +81,6 @@ namespace LibraryCatalog.Class
                 if (string.IsNullOrWhiteSpace(item))
                     continue;
 
-                //Avant (quand il y'avait dans mon 1er exemple, la cat. et nom du livre)
-                //récupère la catégorie du livre
-                //var categorieDuLivre = item.Split(':')[0].Trim();
-                //récupère nom du livre
-                //var nomLivre =  item.Split(':')[1].Trim();
-
                 //récupère nom du livre
                 var nomLivre = item.Trim();
                 //récupère la catégorie du livre
@@ -118,7 +112,6 @@ namespace LibraryCatalog.Class
             var price = PriceCalcul(monDico2);
 
             return price;
-
         }
 
         //Si j'avais eu plusieurs fonctions de traitement , j'aurais créé une factory de calcul

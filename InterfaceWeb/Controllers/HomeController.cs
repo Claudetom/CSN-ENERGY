@@ -98,9 +98,9 @@ namespace Test_CSN_ENERGY.Controllers
         /// <returns></returns>
         private CatalogBooksViewModel GetCatalogBooksViewModel(CatalogBooksViewModel modelPassing, bool isQuantity)
         {
-            // Récupère l'objet model de vue
-            CatalogBooksViewModel model = null;
+            CatalogBooksViewModel model;
 
+            // Récupère l'objet model de vue
             if (HttpContext.Session.Keys.Contains("CatalogBooksViewModel"))
                 model = HttpContext.Session.GetObjectFromJson<CatalogBooksViewModel>("CatalogBooksViewModel");
             else
@@ -110,11 +110,8 @@ namespace Test_CSN_ENERGY.Controllers
             {
                 model.BookName = modelPassing.BookName ?? model.BookName;
                 model.ListeBookName = modelPassing.ListeBookName ?? model.ListeBookName;
+
                 model.Price = !isQuantity ? Store.Buy(modelPassing.SelectedBookNames) : (modelPassing.Price != -1 ? modelPassing.Price : model.Price);
-
-                //Avant mais enlevé la catégorie, car c'était moche lors de la sélection (vu que cette liste sert pour le calcul de quantity et price)
-                //model.Quantity = isQuantity ? Store.Quantity(modelPassing.BookName?.Split(':')[1]) : (modelPassing.Quantity != -1 ? modelPassing.Quantity : model.Quantity);
-
                 model.Quantity = isQuantity ? Store.Quantity(modelPassing.BookName) : (modelPassing.Quantity != -1 ? modelPassing.Quantity : model.Quantity);
 
                 model.SelectedBookNames = modelPassing.SelectedBookNames ?? model.SelectedBookNames;
@@ -142,7 +139,7 @@ namespace Test_CSN_ENERGY.Controllers
         {
             if (ModelState.IsValid)
             {
-                //  
+                //  je regarde pas !
             }
             HttpContext.Session.SetObjectAsJson("CatalogBooksViewModel", model);
 
@@ -150,7 +147,7 @@ namespace Test_CSN_ENERGY.Controllers
         }
 
         /// <summary>
-        /// Permet de créer une liste des noms de livres
+        /// Permet de créer une liste de <SelectListItem>des noms de livres</SelectListItem>
         /// </summary>
         /// <param name="elements"></param>
         /// <returns></returns>
@@ -162,9 +159,6 @@ namespace Test_CSN_ENERGY.Controllers
             {
                 selectList.Add(new SelectListItem
                 {
-                    //Avant (quand il y'avait dans mon 1er exemple, la cat. et nom du livre)
-                    //Value = $"{book.Category}:{book.Name}",
-
                     Value = book.Name.Trim(),
                     Text = $"{book.Category.Trim()} - {book.Name.Trim()}"
                 });

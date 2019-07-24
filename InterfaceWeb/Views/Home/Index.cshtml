@@ -3,25 +3,25 @@
     ViewData["Title"] = "CSN ENERGY TEST";
 }
 
+@Html.AntiForgeryToken()
+
 <div class="text-center">
     <h1 class="display-4">Actions disponibles sur le catalogue</h1>
 </div>
 
 <div class="row">
 
-    @* Affichage de l'action Quantity *@
+    @* Affichage des actions Quantity et Price *@
     @if (Model.ListeBookName != null && Model.ListeBookName.Count() > 0)
     {
+        @* Affichage de l'action Quantity *@
         @await Html.PartialAsync("PartialViews/ActionQuantityPartial", Model);
-    }
-
-    @* Affichage de l'action Price *@
-    @if (Model.ListeBookName != null && Model.ListeBookName.Count() > 0)
-    {
+        @* Affichage de l'action Price *@
         @await Html.PartialAsync("PartialViews/ActionPricePartial", Model);
     }
 </div>
 
+@* Affichage des messages de retour si erreurs *@
 <div class="row">
     <div class="col-sm-12 col-sm-offset-2">
         @if (ViewBag.Message != null)
@@ -36,7 +36,38 @@
 </div>
 
 <script type="text/javascript">
-        window.onload = function () {
-            //alert("@Html.Raw(ViewBag.Message)");
+    var interval;
+
+    window.onload = function () {
+        /**
+         * Action à répétition lors de l'ajout ou suppression
+         * */
+        $('.btnExecute').on('mousedown', function (e) {
+            var btnName = $(this).val();
+            var idx = $(this).data('idx');
+            var name = $(this).data('name')
+
+            EexcutePlusOuMoins(btnName, idx, name);
+
+            interval = setInterval(function () {
+               // debugger
+               EexcutePlusOuMoins(btnName, idx, name);
+            }, 400);
+        }).on('mouseup', function (e) {
+            clearInterval(interval);
+        }).on('mouseleave', function (e) {
+            clearInterval(interval);
+        }).on('mouseout', function (e) {
+            clearInterval(interval);
+        });
+
+        function EexcutePlusOuMoins(btnName, idx, name) {
+            if (btnName == 'Retirer')
+                numberMoins(idx, name);
+
+            if (btnName == 'Ajouter')
+                numberPlus(idx, name);
+        }
     };
+
 </script>

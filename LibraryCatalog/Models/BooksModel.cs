@@ -43,6 +43,7 @@ namespace LibraryCatalog.Models
         [Display(Name = "Category")]
         public string Category { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:C}", ApplyFormatInEditMode = true)]
         [Display(Name = "Price")]
         public int Price { get; set; }
 
