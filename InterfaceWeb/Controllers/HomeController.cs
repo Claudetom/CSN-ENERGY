@@ -17,19 +17,24 @@ namespace Test_CSN_ENERGY.Controllers
     public class HomeController : Controller
     {
         //=====
-        //J'aurais pu passer par un "ViewBag" pour le passage des valeurs du controler aux vues, mais je préfère l'utilisation de model
+        //J'aurais pu passer par un "ViewData[xxx] ViewBag.key n'est pas dispo sous core" pour le passage des valeurs du controler aux vues, mais je préfère l'utilisation de model
         //=====
 
-        #region *** Declarations ***
-        public static IStore Store;
+        #region *** Propriétés ***
+        /// <summary>
+        /// permet de retourner l'objet Store façon Singleton (toujours instancié)
+        /// </summary>
+        public static IStore Store { get; } = Store ?? new Store();
         #endregion
 
         public IActionResult Index()
         {
             Import_Catalog();
 
-            // Récupère l'objet model de vue
+             // Récupère l'objet model de vue
             CatalogBooksViewModel model = GetCatalogBooksViewModel(null, false);
+            ViewData["CatalogBooksViewModel"] = model;
+
             return View(model);
         }
 
@@ -42,6 +47,8 @@ namespace Test_CSN_ENERGY.Controllers
         {
             // Récupère l'objet model de vue
             CatalogBooksViewModel OrigModel = GetCatalogBooksViewModel(model, true);
+            ViewData["CatalogBooksViewModel"] =  model;
+
             SetCatalogBooksViewModel(OrigModel);
 
             //Retourne à l'index
@@ -57,6 +64,8 @@ namespace Test_CSN_ENERGY.Controllers
         {
             // Récupère l'objet model de vue
             CatalogBooksViewModel OrigModel = GetCatalogBooksViewModel(model, false);
+            ViewData["CatalogBooksViewModel"] = model;
+
             SetCatalogBooksViewModel(OrigModel);
 
             //Retourne à l'index
@@ -66,12 +75,13 @@ namespace Test_CSN_ENERGY.Controllers
         [HttpGet]
         public IActionResult Import_Catalog()
         {
-            GetStore();
+            //GetStore();
 
             //importe les données
             Store.Import("CatalogBooks.json");
 
             CatalogBooksViewModel model = CreateListeBookName();
+            ViewData["CatalogBooksViewModel"] = model;
 
             SetCatalogBooksViewModel(model);
 
@@ -83,12 +93,6 @@ namespace Test_CSN_ENERGY.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-
-        private void GetStore()
-        {
-            if (Store == null)
-                Store = new Store();
         }
 
         #region *** Méthode de traitement ***

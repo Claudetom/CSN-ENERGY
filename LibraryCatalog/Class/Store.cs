@@ -44,6 +44,7 @@ namespace LibraryCatalog.Class
 
             //Lecture du fichier et parsing
             CatalogBooks = JsonConvert.DeserializeObject<Books>(File.ReadAllText(jsonPath));
+            //Permet d'obtenir la liste catalog trié
             CatalogBooks.Catalog = CatalogBooks.Catalog.OrderBy(p => p.Category);
         }
 
