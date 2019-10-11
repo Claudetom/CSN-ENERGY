@@ -12,12 +12,13 @@
             @using (Html.BeginForm("Basket", "Home", FormMethod.Post, new { role = "form" }))
             {
 
-                @* ListBox de la liste des livres *@
-                <div class="form-group" style="display: block;">
+                @* ListBox de la liste des livres (old) *@
+                <div class="form-group" style="display: none;">
                     @Html.LabelFor(m => m.SelectedBookNames)
                     @Html.DropDownList("selectBooks", new SelectList(Model.Catalog.Select(x => new { Value = x.Name, Text = $"{x.Category.Trim()} - {x.Name.Trim()}", Price = x.Price }), "Value", "Text"), new { @onclick = "listebook_OnClick(this)", @class = "form-control", size = 6, multiple = "simple" })
                 </div>
 
+                @* GridView de la liste des livres *@
                 <div class="form-group" style="font-size: 14px;height: auto; /*overflow-y: auto;*/">
                     @if (Model.Catalog.Count() > 0)
                     {
@@ -72,8 +73,8 @@
                                         @* Les boutons ajout/supp. *@
                                         <td style="vertical-align: middle; text-align:center; border-top: 0px solid #dee2e6;">
                                             <div class="form-group" style="margin-bottom: 0;">
-                                                <input class="btnExecute btn btn-danger" style="font-size: 12px; font-weight: bold; width: 70px; padding-top: 2px; padding-bottom: 2px; margin-bottom: 1px;" type="button" value="Retirer" data-idx="@idx" data-name="@item.Name"/>
-                                                <input class="btnExecute btn btn-success" style="font-size: 12px; font-weight: bold; width: 70px; padding-top: 2px; padding-bottom: 2px; margin-bottom: 1px;" type="button" value="Ajouter" data-idx="@idx" data-name="@item.Name"/>
+                                                <input class="btnExecute btn btn-danger" style="font-size: 12px; font-weight: bold; width: 70px; padding-top: 2px; padding-bottom: 2px; margin-bottom: 1px;" type="button" value="Retirer" data-idx="@idx" data-name="@item.Name" />
+                                                <input class="btnExecute btn btn-success" style="font-size: 12px; font-weight: bold; width: 70px; padding-top: 2px; padding-bottom: 2px; margin-bottom: 1px;" type="button" value="Ajouter" data-idx="@idx" data-name="@item.Name" />
                                             </div>
                                         </td>
                                     </tr>
