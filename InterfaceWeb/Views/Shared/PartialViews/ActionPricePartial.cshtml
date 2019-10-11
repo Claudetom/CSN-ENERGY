@@ -13,7 +13,7 @@
             {
 
                 @* ListBox de la liste des livres *@
-                <div class="form-group" style="display: none;">
+                <div class="form-group" style="display: block;">
                     @Html.LabelFor(m => m.SelectedBookNames)
                     @Html.DropDownList("selectBooks", new SelectList(Model.Catalog.Select(x => new { Value = x.Name, Text = $"{x.Category.Trim()} - {x.Name.Trim()}", Price = x.Price }), "Value", "Text"), new { @onclick = "listebook_OnClick(this)", @class = "form-control", size = 6, multiple = "simple" })
                 </div>
