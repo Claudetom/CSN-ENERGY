@@ -24,7 +24,7 @@ using Test_CSN_ENERGY.Models;
 #line default
 #line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"288911f2411e2c12cfdb60770b64980a0b99760f", @"/Views/Shared/PartialViews/ActionQuantityPartial.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f4eab0879420ee741af8b6ecb0992f7ca049610b", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8ed713e237dc60e2333c467817d4dde0379866ae", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_PartialViews_ActionQuantityPartial : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<Test_CSN_ENERGY.Models.CatalogBooksViewModel>
     {
         #pragma warning disable 1998
